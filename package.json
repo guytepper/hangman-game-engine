@@ -5,9 +5,11 @@
   "main": "index.js",
   "author": "Guy Tepper",
   "devDependencies": {
+    "coveralls": "^3.0.0",
     "jest": "^22.0.4"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "coverage": "jest --coverage"
   }
 }
