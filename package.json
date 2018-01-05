@@ -6,5 +6,8 @@
   "author": "Guy Tepper",
   "devDependencies": {
     "jest": "^22.0.4"
+  },
+  "scripts": {
+    "test": "jest"
   }
 }
