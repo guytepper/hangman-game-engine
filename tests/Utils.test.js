@@ -13,3 +13,10 @@ it('Creates an array of conceal characters', () => {
 
   expect(concealArr).toEqual(expectedArr);
 });
+
+it('Finds all indexes of an element in array', () => {
+  const array = ['B', 'A', 'B', 'Y'];
+  const item = 'B';
+  indexes = utils.getAllIndexes(array, item);
+  expect(indexes).toEqual([0, 2]);
+});

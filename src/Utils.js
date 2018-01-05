@@ -29,4 +29,19 @@ function createConcealArr(word, concealChar = '_') {
   return hiddenArray;
 }
 
-module.exports = { isAlphabetical, createConcealArr };
+/**
+ * Returns the occurrences of an element in an array.
+ * @param {array} array - The array to find the item's occurrences for.
+ * @param {} item - The item to find it's occurrences in the array.
+ * @returns {array} - Array of the item's occurences in the provided array.
+ */
+function getAllIndexes(array, itemToFind) {
+  return array.reduce((indexes, item, index) => {
+    if (item === itemToFind) {
+      indexes.push(index);
+    }
+    return indexes;
+  }, []);
+}
+
+module.exports = { isAlphabetical, createConcealArr, getAllIndexes };
