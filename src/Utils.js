@@ -11,12 +11,13 @@ function isAlphabetical(str) {
 }
 
 /**
- * Create an array of conceal characters instead of the word letters.
- * @param {word} word - The word to create the conceal array from.
+ * Creates an array of conceal characters instead of the word letters.
+ * @param {string} word - The word to create the conceal array from.
+ * @param {string} cocnealChar - The conceal character to swap the word's letter with.
  * @returns {array} The conceal word array.
  */
-function createConcealArr(word, concealChar) {
-  const hiddenArray = name.map(letter => {
+function createConcealArr(word, concealChar = '_') {
+  const hiddenArray = [...word].map(letter => {
     if (isAlphabetical(letter)) {
       return concealChar;
     }
@@ -27,3 +28,5 @@ function createConcealArr(word, concealChar) {
 
   return hiddenArray;
 }
+
+module.exports = { isAlphabetical, createConcealArr };
