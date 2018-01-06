@@ -44,4 +44,18 @@ function getAllIndexes(array, itemToFind) {
   }, []);
 }
 
-module.exports = { isAlphabetical, createConcealArr, getAllIndexes };
+/**
+ * Swap the provided array indexes to the respective indexes in another array.
+ * TODO: Find a better method name?
+ * @param {array} array - The array to modify it's items.
+ * @param {array} arrayToSwap - The array to swap items with.
+ * @param {array} indexes - The indexes to swap.
+ * @returns {array} A new array with the modified items.
+ */
+function changeArrayItems(arr, arrayToSwap, indexes) {
+  const newArr = [...arr];
+  indexes.forEach(index => (newArr[index] = arrayToSwap[index]));
+  return newArr;
+}
+
+module.exports = { isAlphabetical, createConcealArr, getAllIndexes, changeArrayItems };
