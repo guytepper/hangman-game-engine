@@ -10,7 +10,8 @@ function Engine() {
   this.charactersMap = []; // The characters array, e.g. ['B', 'a', 'b', 'y'] for 'Baby'.
   this.uppercaseMap = []; // Same as charactersMap, but characters are uppercased (for easing guess checking).
   this.guessedLetters = [];
-  this.guessCount = 0;
+  this.totalGuesses = 0;
+  this.failedGuesses = 0;
   this.config = DEFAULT_CONFIG; // The game config object.
 }
 
@@ -33,13 +34,14 @@ Engine.prototype.guess = function guess(char) {
   const guessedLetters = [...this.guessedLetters];
   // Check if the guessed letter has been guessed already.
   if (!guessedLetters.includes(char)) {
-    this.guessCount += 1;
+    this.totalGuesses += 1;
+    this.guessedLetters = [...this.guessedLetters, char];
+
     const indexes = Utils.getAllIndexes(this.uppercaseMap, char.toUpperCase());
     if (indexes.length > 0) {
       this.hiddenWord = Utils.changeArrayItems(this.hiddenWord, this.charactersMap, indexes);
-      this.guessedLetters = [...this.guessedLetters, char];
     } else {
-      // Fail
+      this.failedGuesses += 1;
     }
   }
   return this;
