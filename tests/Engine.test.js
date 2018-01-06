@@ -6,6 +6,7 @@ it('Creates a new game', () => {
   expect(game).toEqual(
     expect.objectContaining({
       word: expect.any(String),
+      hiddenWord: expect.any(Array),
       charactersMap: expect.any(Array),
       config: expect.any(Object)
     })

@@ -7,9 +7,9 @@ it('Checks if a string is alphabetical', () => {
 });
 
 it('Creates an array of conceal characters', () => {
-  const word = 'baby';
-  const concealArr = utils.createConcealArr('baby');
-  const expectedArr = ['_', '_', '_', '_'];
+  const word = 'baby!';
+  const concealArr = utils.createConcealArr('baby!');
+  const expectedArr = ['_', '_', '_', '_', '!'];
 
   expect(concealArr).toEqual(expectedArr);
 });
