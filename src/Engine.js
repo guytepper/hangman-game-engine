@@ -37,13 +37,16 @@ Engine.prototype.guess = function guess(char) {
     this.totalGuesses += 1;
     this.guessedLetters = [...this.guessedLetters, char];
 
+    // Check indexes of the guessed letter in the letters array
     const indexes = Utils.getAllIndexes(this.uppercaseMap, char.toUpperCase());
     if (indexes.length > 0) {
+      // Reveal the letters in the hidden characters array
       this.hiddenWord = Utils.changeArrayItems(this.hiddenWord, this.charactersMap, indexes);
     } else {
       this.failedGuesses += 1;
     }
   }
+
   return this;
 };
 
