@@ -30,17 +30,23 @@ Engine.prototype.newGame = function newGame(word, config) {
   return this;
 };
 
+/**
+ * Performs a game guess.
+ * @param {string} char - The guessed character.
+ * @returns {Object} The game object.
+ */
 Engine.prototype.guess = function guess(char) {
   const guessedLetters = [...this.guessedLetters];
   // Check if the guessed letter has been guessed already.
   if (!guessedLetters.includes(char)) {
     this.totalGuesses += 1;
+    // Add the gueesed letter to the guessed letters array.
     this.guessedLetters = [...this.guessedLetters, char];
 
-    // Check indexes of the guessed letter in the letters array
+    // Check indexes of the guessed letter in the letters array.
     const indexes = Utils.getAllIndexes(this.uppercaseMap, char.toUpperCase());
     if (indexes.length > 0) {
-      // Reveal the letters in the hidden characters array
+      // Reveal the letters in the hidden characters array.
       this.hiddenWord = Utils.changeArrayItems(this.hiddenWord, this.charactersMap, indexes);
     } else {
       this.failedGuesses += 1;
