@@ -6,7 +6,7 @@ const DEFAULT_CONFIG = {
 };
 
 function Engine() {
-  this.word = ''; // The game word.
+  this.word = '';
   this.hiddenWord = []; // The hidden characters array, e.g. ['_', '_', '_', '_'] for 'Baby'.
   this.charactersMap = []; // The characters array, e.g. ['B', 'a', 'b', 'y'] for 'Baby'.
   this.uppercaseMap = []; // Same as charactersMap, but characters are uppercased (for easing guess checking).
@@ -14,7 +14,7 @@ function Engine() {
   this.totalGuesses = 0;
   this.failedGuesses = 0;
   this.status = 'PENDING';
-  this.config = DEFAULT_CONFIG; // The game config object.
+  this.config = DEFAULT_CONFIG;
 }
 
 /**
