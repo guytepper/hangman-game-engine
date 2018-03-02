@@ -1,7 +1,8 @@
 const Utils = require('./Utils');
 
 const DEFAULT_CONFIG = {
-  concealCharacter: '_'
+  concealCharacter: '_',
+  maxAttempt: 4
 };
 
 function Engine() {
@@ -12,6 +13,7 @@ function Engine() {
   this.guessedLetters = [];
   this.totalGuesses = 0;
   this.failedGuesses = 0;
+  this.status = 'PENDING';
   this.config = DEFAULT_CONFIG; // The game config object.
 }
 
@@ -53,6 +55,9 @@ Engine.prototype.guess = function guess(char) {
     }
   }
 
+  if (this.config.maxAttempt === this.failedGuesses) {
+    this.status = 'LOST';
+  }
   return this;
 };
 
