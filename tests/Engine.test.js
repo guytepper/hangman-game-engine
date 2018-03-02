@@ -17,3 +17,18 @@ it('Creates a new game', () => {
     })
   );
 });
+
+it('Guesses a character', () => {
+  const game = new HangmanEngine().newGame('Baby');
+  game.guess('a');
+  game.guess('c');
+
+  expect(game).toEqual(
+    expect.objectContaining({
+      hiddenWord: ['_', 'a', '_', '_'],
+      guessedLetters: ['a', 'c'],
+      totalGuesses: 2,
+      failedGuesses: 1
+    })
+  );
+});
