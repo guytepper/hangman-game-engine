@@ -29,6 +29,7 @@ Engine.prototype.newGame = function newGame(word, config) {
   this.hiddenWord = Utils.createConcealArr(word, this.config.concealCharacter);
   this.charactersMap = [...word];
   this.uppercaseMap = [...word].map(c => c.toUpperCase());
+  this.status = 'IN_PROGRESS';
   return this;
 };
 
@@ -38,6 +39,10 @@ Engine.prototype.newGame = function newGame(word, config) {
  * @returns {Object} The game object.
  */
 Engine.prototype.guess = function guess(char) {
+  if (this.status !== 'IN_PROGRESS') {
+    return this;
+  }
+
   const guessedLetters = [...this.guessedLetters];
   // Check if the guessed letter has been guessed already.
   if (!guessedLetters.includes(char)) {
@@ -58,6 +63,11 @@ Engine.prototype.guess = function guess(char) {
   if (this.config.maxAttempt === this.failedGuesses) {
     this.status = 'LOST';
   }
+
+  if (this.hiddenWord.indexOf('_') === -1) {
+    this.status = 'WON';
+  }
+
   return this;
 };
 
