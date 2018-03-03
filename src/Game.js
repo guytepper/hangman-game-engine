@@ -5,40 +5,42 @@ const DEFAULT_CONFIG = {
   maxAttempt: 4
 };
 
-function Engine() {
-  this.word = '';
-  this.hiddenWord = []; // The hidden characters array, e.g. ['_', '_', '_', '_'] for 'Baby'.
-  this.charactersMap = []; // The characters array, e.g. ['B', 'a', 'b', 'y'] for 'Baby'.
-  this.uppercaseMap = []; // Same as charactersMap, but characters are uppercased (for easing guess checking).
-  this.guessedLetters = [];
-  this.totalGuesses = 0;
-  this.failedGuesses = 0;
-  this.status = 'PENDING';
-  this.config = DEFAULT_CONFIG;
-}
-
 /**
  * Starts a new game.
  * @param {string} word - The word to play the game with.
  * @param {Object} [config] - The game config.
- * @returns {Object} The engine object.
+ * @returns {Object} The game object.
  */
-Engine.prototype.newGame = function newGame(word, config) {
+function Game(word, config) {
   this.word = word;
-  this.config = Object.assign({}, this.config, config);
+  this.config = Object.assign({}, DEFAULT_CONFIG, config);
+  // The hidden characters array, e.g. ['_', '_', '_', '_'] for 'Baby'.
   this.hiddenWord = Utils.createConcealArr(word, this.config.concealCharacter);
+  // The characters array, e.g. ['B', 'a', 'b', 'y'] for 'Baby'.
   this.charactersMap = [...word];
+  // Same as charactersMap, but characters are uppercased (for easing guess checking).
   this.uppercaseMap = [...word].map(c => c.toUpperCase());
+  this.guessedLetters = [];
+  // this.totalGuesses = this.guessedLetters.length;
+  this.failedGuesses = 0;
   this.status = 'IN_PROGRESS';
+
+  // Use the guessedLetters array length to count the total guesses.
+  Object.defineProperty(this, 'totalGuesses', {
+    get: function() {
+      return this.guessedLetters.length;
+    }
+  });
+
   return this;
-};
+}
 
 /**
  * Performs a game guess.
  * @param {string} char - The guessed character.
  * @returns {Object} The game object.
  */
-Engine.prototype.guess = function guess(char) {
+Game.prototype.guess = function guess(char) {
   if (this.status !== 'IN_PROGRESS') {
     return this;
   }
@@ -46,7 +48,6 @@ Engine.prototype.guess = function guess(char) {
   const guessedLetters = [...this.guessedLetters];
   // Check if the guessed letter has been guessed already.
   if (!guessedLetters.includes(char)) {
-    this.totalGuesses += 1;
     // Add the gueesed letter to the guessed letters array.
     this.guessedLetters = [...this.guessedLetters, char];
 
@@ -71,6 +72,4 @@ Engine.prototype.guess = function guess(char) {
   return this;
 };
 
-const e = new Engine().newGame('sup');
-
-module.exports = Engine;
+module.exports = Game;
