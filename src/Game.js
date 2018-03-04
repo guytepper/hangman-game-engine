@@ -21,7 +21,6 @@ function Game(word, config) {
   // Same as charactersMap, but characters are uppercased (for easing guess checking).
   this.uppercaseMap = [...word].map(c => c.toUpperCase());
   this.guessedLetters = [];
-  // this.totalGuesses = this.guessedLetters.length;
   this.failedGuesses = 0;
   this.status = 'IN_PROGRESS';
 
