@@ -5,7 +5,7 @@
 
 > A JavaScript hangman game engine.
 
-## Install
+## Installation
 
 ```
 npm install hangman-game-enegine
