@@ -1,8 +1,8 @@
 {
   "name": "hangman-game-engine",
-  "version": "0.0.1",
+  "version": "0.0.",
   "description": "JavaScript hangman game engine.",
-  "main": "index.js",
+  "main": "src/Game.js",
   "author": "Guy Tepper",
   "devDependencies": {
     "coveralls": "^3.0.0",
