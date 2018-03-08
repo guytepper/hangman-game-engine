@@ -8,13 +8,13 @@
 ## Installation
 
 ```
-npm install hangman-game-enegine
+npm install hangman-game-engine
 ```
 
 Alternatively, you can use yarn.
 
 ```
-yarn add hangman-game-enegine
+yarn add hangman-game-engine
 ```
 
 ## Usage
