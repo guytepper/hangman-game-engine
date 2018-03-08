@@ -37,6 +37,7 @@ game.status; // 'WON'
 | `word`           | `string` | The word that's being played.                                                                        | `Baby`                           |
 | `hiddenWord`     | `array`  | The word represented by an array. The characters are displayed by a conceal character until guessed. | `['_', 'a', '_', '_'`            |
 | `guessedLetters` | `array`  | Array of all the guessed letters.                                                                    | `['a', 'c']`                     |
+| `totalGuesses`  | `number` | Total guesses count.                                                                                | `2`                              |
 | `failedGuesses`  | `number` | Failed guesses count.                                                                                | `1`                              |
 | `status`         | `string` | The current game status.                                                                             | `'IN_PROGRESS' / 'WON' / 'LOST'` |
 
