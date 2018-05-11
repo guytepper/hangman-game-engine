@@ -71,4 +71,9 @@ Game.prototype.guess = function guess(char) {
   return this;
 };
 
+Game.prototype.revealHiddenWord = function revealHiddenWord() {
+  this.hiddenWord = this.charactersMap;
+  return this;
+};
+
 module.exports = Game;
