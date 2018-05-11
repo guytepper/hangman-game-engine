@@ -62,3 +62,10 @@ it('Stops the game after lose', () => {
 
   expect(game.status).toEqual('LOST');
 });
+
+it('Reveals the hidden word', () => {
+  const game = new Game('Baby');
+  expect(game.hiddenWord).toEqual(['_', '_', '_', '_']);
+  game.revealWord();
+  expect(game.hiddenWord).toEqual(['B', 'a', 'b', 'y']);
+});
