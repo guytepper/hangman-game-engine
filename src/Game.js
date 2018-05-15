@@ -45,7 +45,7 @@ Game.prototype.guess = function guess(char) {
   }
 
   const guessedLetters = [...this.guessedLetters];
-  // Check if the guessed letter has been guessed already.
+  // Check if the guessed letter had been guessed already.
   if (!guessedLetters.includes(char)) {
     // Add the gueesed letter to the guessed letters array.
     this.guessedLetters = [...this.guessedLetters, char];
