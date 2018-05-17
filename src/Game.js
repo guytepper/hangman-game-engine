@@ -21,6 +21,7 @@ function Game(word, config) {
   // Same as charactersMap, but characters are uppercased (for easing guess checking).
   this.uppercaseMap = [...word].map(c => c.toUpperCase());
   this.guessedLetters = [];
+  this.failedLetters = [];
   this.failedGuesses = 0;
   this.status = 'IN_PROGRESS';
 
@@ -45,7 +46,7 @@ Game.prototype.guess = function guess(char) {
   }
 
   const guessedLetters = [...this.guessedLetters];
-  // Check if the guessed letter has been guessed already.
+  // Check if the guessed letter had been guessed already.
   if (!guessedLetters.includes(char)) {
     // Add the gueesed letter to the guessed letters array.
     this.guessedLetters = [...this.guessedLetters, char];
@@ -56,6 +57,7 @@ Game.prototype.guess = function guess(char) {
       // Reveal the letters in the hidden characters array.
       this.hiddenWord = Utils.changeArrayItems(this.hiddenWord, this.charactersMap, indexes);
     } else {
+      this.failedLetters.push(char);
       this.failedGuesses += 1;
     }
   }
