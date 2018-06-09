@@ -1,6 +1,6 @@
 {
   "name": "hangman-game-engine",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "JavaScript hangman game engine.",
   "main": "dist/bundle.js",
   "author": "Guy Tepper",
