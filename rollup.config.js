@@ -1,5 +1,5 @@
 import commonjs from 'rollup-plugin-commonjs';
-import buble from 'rollup-plugin-buble';
+import babel from 'rollup-plugin-babel';
 
 export default {
   input: 'src/Game.js',
@@ -7,5 +7,10 @@ export default {
     file: './dist/bundle.js',
     format: 'cjs'
   },
-  plugins: [commonjs(), buble()]
+  plugins: [
+    commonjs(),
+    babel({
+      exclude: 'node_modules/**'
+    })
+  ]
 };
