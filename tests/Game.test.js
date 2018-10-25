@@ -76,3 +76,15 @@ it('Reveals the hidden word', () => {
   game.revealHiddenWord();
   expect(game.hiddenWord).toEqual(['B', 'a', 'b', 'y']);
 });
+
+it('Rejects word guess when game has eneded', () => {
+  const game = new Game('Baby');
+  game
+    .guess('b')
+    .guess('a')
+    .guess('y');
+  expect(game.status).toEqual('WON');
+  game.guess('h');
+  // The 'h' letter shouldn't be included in the guessed letters array.
+  expect(game.guessedLetters).toEqual(['b', 'a', 'y']);
+});
