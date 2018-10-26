@@ -88,3 +88,11 @@ it('Rejects word guess when game has eneded', () => {
   // The 'h' letter shouldn't be included in the guessed letters array.
   expect(game.guessedLetters).toEqual(['b', 'a', 'y']);
 });
+
+it('Ignores letter guess that have been guessed already', () => {
+  const game = new Game('Baby');
+  game.guess('b');
+  game.guess('b');
+  expect(game.totalGuesses).toEqual(1);
+  expect(game.guessedLetters).toEqual(['b']);
+});
