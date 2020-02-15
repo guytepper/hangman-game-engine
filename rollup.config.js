@@ -1,4 +1,4 @@
-import commonjs from 'rollup-plugin-commonjs';
+import commonjs from '@rollup/plugin-commonjs';
 import babel from 'rollup-plugin-babel';
 
 export default {
@@ -11,7 +11,7 @@ export default {
     commonjs(),
     babel({
       exclude: 'node_modules/**',
-      plugins: ['external-helpers']
+      plugins: ['@babel/plugin-external-helpers']
     })
   ]
 };
